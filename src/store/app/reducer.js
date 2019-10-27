@@ -1,3 +1,6 @@
+import { createReducer } from 'utilities/createReducer';
+import reactions from './reactions';
+
 const initialState = {
     loading: {
         isLoading: false,
@@ -10,10 +13,4 @@ const initialState = {
     }
 };
 
-export default function reducer(state = initialState, action) {
-    switch (action.type) {
-        default: {
-            return state;
-        }
-    }
-}
+export default createReducer(reactions, initialState);

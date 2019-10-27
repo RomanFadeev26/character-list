@@ -1,4 +1,4 @@
-import * as reactions from './reactions';
+import reactions from './reactions';
 import createReducer from 'utilities/createReducer';
 const initialState = {};
 

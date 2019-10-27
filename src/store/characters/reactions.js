@@ -1,14 +1,22 @@
-import { dissoc, assocPath, assoc } from 'ramda';
+import setProp from 'crocks/helpers/setProp';
+import setPath from 'crocks/helpers/setPath';
+
+import unsetProp from 'crocks/helpers/unsetProp';
 import * as charactersActionTypes from './actions/actionTypes';
 
 export const fetchCharacters = (_, payload) => payload;
-fetchCharacters.type = charactersActionTypes.FETCH_CHARACTERS;
 
-export const addCharacter = (state, payload) => assoc(payload.id, payload, state);
-addCharacter.type = charactersActionTypes.ADD_CHARACTER;
+export const addCharacter = (state, payload) => setProp(payload.id, payload, state);
 
-export const removeCharacter = (state, { id }) => dissoc(id, state);
-removeCharacter.type = charactersActionTypes.REMOVE_CHARACTER;
+export const removeCharacter = (state, id) => unsetProp(id, state);
 
-export const changeBaseCharacterStats = (state, { id, statName, value }) => assocPath([id, 'baseCharacteristics', statName], value, state);
-changeBaseCharacterStats.type = charactersActionTypes.CHANGE_CHARACTER_STATS;
+export const changeBaseCharacterStats = (state, { id, statName, value }) => setPath([id, 'baseCharacteristics', statName], value, state);
+
+const reactions = {
+    [charactersActionTypes.FETCH_CHARACTERS]: fetchCharacters,
+    [charactersActionTypes.ADD_CHARACTER]: addCharacter,
+    [charactersActionTypes.REMOVE_CHARACTER]: removeCharacter,
+    [charactersActionTypes.CHANGE_CHARACTER_STATS]: changeBaseCharacterStats
+};
+
+export default reactions;

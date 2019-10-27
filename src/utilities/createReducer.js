@@ -1,16 +1,13 @@
-import { compose, values, reduce, assoc, propOr } from 'ramda';
+import getPropOr from 'crocks/helpers/getPropOr';
+import curry from 'crocks/helpers/curry';
 
 const defaultFunc = (state, _) => state;
 
-const reduceReactions = compose(reduce((acc, x) => assoc(x.type, x, acc), {}),
-values);
+const propWithDefaultFunc = getPropOr(defaultFunc);
 
-const propWithDefaultFunc = propOr(defaultFunc);
+const createReducer = curry((reactions, initialState, state, {type, payload}) => {
+    const reaction = propWithDefaultFunc(type, reactions);
+    return reaction(state || initialState, payload)
+});
 
-const createReducer = (reactions, initialState) =>
-    (state = initialState, {type, payload}) => compose(
-                propWithDefaultFunc(type),
-                reduceReactions
-            )(reactions)(state, payload);
-    
-export default createReducer
+export default createReducer;
