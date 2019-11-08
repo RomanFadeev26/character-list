@@ -1,26 +1,9 @@
 import React from 'react';
-import asyncAxios from './utilities/asyncAxios';
+import {Provider} from 'react-redux';
+import store from './store';
 
-class App extends React.PureComponent {
-  
-  componentDidMount() {
-    asyncAxios({
-      method: 'get',
-      url: 'characters'
-    }).fork(console.log, console.log);
-  }
-
-  render() {
-    return (
-      <div />
-    );
-  }
-}
-
-// function App() {
-//   return (
-//     <div />
-//   );
-// }
-
-export default App;
+export default () => (
+    <Provider store={store}>
+        <div/>
+    </Provider>
+);
