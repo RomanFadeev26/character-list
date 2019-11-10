@@ -1,0 +1,6 @@
+{
+  "name": "CharactersPage",
+  "version": "1.0.0",
+  "private": true,
+  "main": "./CharactersPage.jsx"
+}

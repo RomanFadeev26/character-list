@@ -7,9 +7,6 @@ const initialState = {
         loadingMessage: "",
         isError: false,
         errorMessage: ""
-    },
-    entities: {
-        characters: {}
     }
 };
 
