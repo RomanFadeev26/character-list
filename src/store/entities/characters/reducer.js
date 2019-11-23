@@ -1,5 +1,5 @@
 import reactions from './reactions';
 import createReducer from 'utilities/createReducer';
-const initialState = {};
+const initialState = [];
 
 export default createReducer(reactions, initialState);
