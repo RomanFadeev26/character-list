@@ -2,7 +2,7 @@ import React, { PureComponent } from "react";
 import { fetchAllCharactersAction } from 'store/entities/characters/actions';
 import { previews } from 'store/selectors/characters';
 import { connect } from 'react-redux';
-
+import CharacterPreviewCard from './CharacterPreviewCard';
 
 class CharactersPage extends PureComponent {
 
@@ -13,8 +13,7 @@ class CharactersPage extends PureComponent {
 
     render() {
         const { previews } = this.props;
-        console.log(previews)
-        return <div>Test</div>;
+        return previews.map(preview => (<CharacterPreviewCard {...preview} />));
     }
 }
 
