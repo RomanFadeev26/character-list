@@ -1,27 +1,30 @@
 import React from "react";
+import styles from './CharacterPreviewCard.module.css';
 
 const CharacterPreviewCard = ({
-    level,
-    classes,
-    fullName,
-    race,
-    photo
-}) => {
+                                  level,
+                                  classes,
+                                  fullName,
+                                  race,
+                                  photo
+                              }) => {
     const classesBlocks = classes.map(
         characterClass => (
-                <div>
-                    <span>{characterClass.type}</span>
-                    <span> Level: {characterClass.level}</span>
-                </div>
-            )
-        );
+            <p>
+                <span>{characterClass.type.replace(/^./, match => match.toString().toUpperCase())}</span>
+                <span> Level: {characterClass.level}</span>
+            </p>
+        )
+    );
     return (
-        <div>
-            <div>{fullName}</div>
-            <div>Уровень: {level}</div>
-            <div>{classesBlocks}</div>
-            <div>{race}</div>
-            <img width={100} height={100} src={photo} alt="Фотография персонажа" />
+        <div className={styles.CharacterPreviewCard}>
+            <img src={photo} alt="Фотография персонажа"/>
+            <div>
+                <h4>{fullName}</h4>
+                <p>Уровень: {level}</p>
+                <div>{classesBlocks}</div>
+                <p>{race}</p>
+            </div>
         </div>
     );
 };

@@ -3,17 +3,18 @@ import { fetchAllCharactersAction } from 'store/entities/characters/actions';
 import { previews } from 'store/selectors/characters';
 import { connect } from 'react-redux';
 import CharacterPreviewCard from './CharacterPreviewCard';
+import styles from './CharactersPage.module.css';
 
 class CharactersPage extends PureComponent {
 
     componentDidMount() {
         const { fetchAllCharacters } = this.props;
-        fetchAllCharacters(); 
+        fetchAllCharacters();
     }
 
     render() {
         const { previews } = this.props;
-        return previews.map(preview => (<CharacterPreviewCard {...preview} />));
+        return <main className={styles.CharactersPage}>{previews.map(preview => (<CharacterPreviewCard {...preview} />))}</main>;
     }
 }
 

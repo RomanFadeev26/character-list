@@ -6,6 +6,8 @@ import {createBrowserHistory} from 'history';
 import {stringify, parse} from 'qs';
 import Routes from './components/Routes';
 import store from './store';
+import './common-styles/colors.css';
+import './common-styles/rules.css';
 
 const history = qhistory(
     createBrowserHistory(),
