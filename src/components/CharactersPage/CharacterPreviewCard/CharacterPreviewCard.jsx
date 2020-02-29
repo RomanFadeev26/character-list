@@ -9,8 +9,8 @@ const CharacterPreviewCard = ({
                                   photo
                               }) => {
     const classesBlocks = classes.map(
-        characterClass => (
-            <p>
+        (characterClass, i) => (
+            <p key={i}>
                 <span>{characterClass.type.replace(/^./, match => match.toString().toUpperCase())}</span>
                 <span> Level: {characterClass.level}</span>
             </p>

@@ -14,7 +14,7 @@ class CharactersPage extends PureComponent {
 
     render() {
         const { previews } = this.props;
-        return <main className={styles.CharactersPage}>{previews.map(preview => (<CharacterPreviewCard {...preview} />))}</main>;
+        return <main className={styles.CharactersPage}>{previews.map(preview => (<CharacterPreviewCard key={preview.id} {...preview} />))}</main>;
     }
 }
 
