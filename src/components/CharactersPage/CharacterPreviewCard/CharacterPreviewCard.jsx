@@ -1,13 +1,10 @@
 import React from "react";
+import {Link} from 'react-router-dom';
 import styles from './CharacterPreviewCard.module.css';
 
 const CharacterPreviewCard = ({
-                                  level,
-                                  classes,
-                                  fullName,
-                                  race,
-                                  photo
-                              }) => {
+    id, level, classes, fullName, race, photo
+}) => {
     const classesBlocks = classes.map(
         (characterClass, i) => (
             <p key={i}>
@@ -17,15 +14,17 @@ const CharacterPreviewCard = ({
         )
     );
     return (
-        <div className={styles.CharacterPreviewCard}>
-            <img src={photo} alt="Фотография персонажа"/>
-            <div>
-                <h4>{fullName}</h4>
-                <p>Уровень: {level}</p>
-                <div>{classesBlocks}</div>
-                <p>{race}</p>
+        <Link to={`/characters/${id}`}>
+            <div className={styles.CharacterPreviewCard}>
+                <img src={photo} alt="Фотография персонажа"/>
+                <div>
+                    <h4>{fullName}</h4>
+                    <p>Уровень: {level}</p>
+                    <div>{classesBlocks}</div>
+                    <p>{race}</p>
+                </div>
             </div>
-        </div>
+        </Link>
     );
 };
 
