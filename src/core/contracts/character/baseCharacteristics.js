@@ -1,4 +1,4 @@
-import RefinementType from 'utilities/RefinementType';
+import RefinementType from '../../../utilities/RefinementType';
 
 const lessetThenMax = type => RefinementType.of(x => {
     if(x <= 20) return x;
@@ -6,7 +6,7 @@ const lessetThenMax = type => RefinementType.of(x => {
 });
 
 const largerThenMin = type => RefinementType.of(x => {
-    if(x >= 0) return x; 
+    if(x >= 0) return x;
     throw new Error(`${type} should be bigger then 0`);
 });
 

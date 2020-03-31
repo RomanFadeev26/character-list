@@ -1,4 +1,4 @@
-import RefinementType from 'utilities/RefinementType';
+import RefinementType from '../../../utilities/RefinementType';
 
 const alignments = ['LG', 'NG', 'CG', 'LN', 'NN', 'CN', 'LE', 'NE', 'CE'];
 

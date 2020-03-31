@@ -1,4 +1,4 @@
-import RefinementType from 'utilities/RefinementType';
+import RefinementType from '../../../utilities/RefinementType';
 
 const classes = [
     'wizard',

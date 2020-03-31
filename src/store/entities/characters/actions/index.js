@@ -4,9 +4,9 @@ import bimap from 'crocks/pointfree/bimap';
 import fst from 'crocks/Pair/fst';
 import snd from 'crocks/Pair/snd';
 import getPropOr from 'crocks/helpers/getPropOr';
-import fetchAllCharacters from "api/fetchAllCharacters";
+import fetchAllCharacters from "../../../../api/fetchAllCharacters";
 import {FETCH_CHARACTERS} from './actionTypes';
-import {loadingError, loadingSuccess} from "store/app/actions/actions";
+import {loadingError, loadingSuccess} from "../../../../store/app/actions/actions";
 
 const fetchCharacters = (characters) => ({type: FETCH_CHARACTERS, payload: characters});
 
