@@ -61,7 +61,7 @@ function id(a) {
     return a;
 }
 
-function memoize (func) {
+export function memoize (func) {
     var memoArg, memoResult;
     return function (a) {
         if(memoArg !== a) {
