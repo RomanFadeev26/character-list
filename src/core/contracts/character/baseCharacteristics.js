@@ -1,6 +1,6 @@
 import RefinementType from '../../../utilities/RefinementType';
 
-const lessetThenMax = type => RefinementType.of(x => {
+const lesserThenMax = type => RefinementType.of(x => {
     if(x <= 20) return x;
     throw new Error(`${type} should be lesser then 20`);
 });
@@ -15,7 +15,7 @@ const isNumber = type => RefinementType.of(x => {
     throw new Error(`${type} should be a number`)
 });
 
-const baseCharacteristic = type => lessetThenMax(type).and(largerThenMin(type)).and(isNumber(type)).match;
+const baseCharacteristic = type => lesserThenMax(type).and(largerThenMin(type)).and(isNumber(type)).match;
 
 const baseCharacteristicsContract = {
     "strength": baseCharacteristic("strength"),
