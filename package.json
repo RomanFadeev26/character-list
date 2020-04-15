@@ -19,6 +19,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "startWithMocks": "REACT_APP_MOCK_ON=true npm start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
