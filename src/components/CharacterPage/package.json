@@ -1,5 +1,5 @@
 {
-  "name": "CharacterPage",
+  "name": "character-page",
   "version": "1.0.0",
   "private": true,
   "main": "CharacterPage.jsx"
