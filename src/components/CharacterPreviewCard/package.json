@@ -1,6 +1,6 @@
 {
     "name": "CharacterPreviewCard",
     "version": "1.0.0",
-    "main": "./CharacterPreviewCard.jsx",
+    "main": "CharacterPreviewCard.jsx",
     "private": true
 }

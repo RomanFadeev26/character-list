@@ -1,13 +1,6 @@
-import React, {Component} from 'react';
+import React from 'react';
+import BaseCharacteristics from "../BaseCharacteristics";
 
-class CharacterPage extends Component {
-    render() {
-        return (
-            <div>
-
-            </div>
-        );
-    }
-}
+const CharacterPage = () => (<div><BaseCharacteristics /></div>);
 
 export default CharacterPage;

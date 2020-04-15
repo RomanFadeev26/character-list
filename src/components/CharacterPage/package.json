@@ -2,5 +2,5 @@
   "name": "CharacterPage",
   "version": "1.0.0",
   "private": true,
-  "main": "./CharacterPage.jsx"
+  "main": "CharacterPage.jsx"
 }
