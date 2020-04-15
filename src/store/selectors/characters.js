@@ -1,29 +1,13 @@
-import getProp from 'crocks/Maybe/getProp';
-import find from 'crocks/Maybe/find';
+import getPath from 'crocks/Maybe/getPath';
+
 import pick from 'crocks/helpers/pick';
 import compose from 'crocks/helpers/compose';
 import map from 'crocks/pointfree/map';
 import option from 'crocks/pointfree/option';
 
-import { createStructuredSelector, createSelector } from 'reselect';
+import { createStructuredSelector } from 'reselect';
 
-const getCharacters = getProp(['entities', 'characters']);
+export const getCharacters = getPath(['entities', 'characters']);
 const getCharactersPreviews = pick(['level', 'classes', 'fullName', 'race', 'photo', 'id']);
 
 export const previews = createStructuredSelector({previews: compose(map(getCharactersPreviews), option([]), getCharacters)});
-
-export const characters = createStructuredSelector({characters: getCharacters});
-
-const getCharacterId = (_, props) => getProp(['match', 'params', 'id'], props);
-
-const findCharacterById = id => find(character => character.id === id);
-
-const characterFinder = createSelector(
-    getCharacterId,
-    findCharacterById
-);
-
-export const character = createSelector(
-    [characters, getCharacterId],
-    (characters, id) => findCharacterById(id)(characters)
-);
