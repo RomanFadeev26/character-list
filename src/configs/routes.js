@@ -1,9 +1,9 @@
 import CharactersPage from "../components/CharactersPage";
 import CharacterPage from "../components/CharacterPage";
 
-const index = '/';
-const characters = '/characters';
-const character = `${characters}/:id`;
+const INDEX = '/';
+const CHARACTERS = '/characters';
+const CHARACTER = `${CHARACTERS}/:id`;
 
-export const CharactersPageRoute = {path: characters, component: CharactersPage, exact: true, key: characters};
-export const CharacterPageRoute = {path: character, component: CharacterPage, key: character};
+export const CharactersPageRoute = {path: CHARACTERS, component: CharactersPage, exact: true, key: CHARACTERS};
+export const CharacterPageRoute = {path: CHARACTER, component: CharacterPage, key: CHARACTER};

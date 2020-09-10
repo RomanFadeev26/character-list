@@ -1,1 +1,1 @@
-export const characters = 'characters';
+export const CHARACTERS = 'characters';
