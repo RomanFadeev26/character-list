@@ -9,9 +9,9 @@ import {CHARACTERS} from '../configs/apiRoutes';
 const mapCharacterList = map(mapProps(characterContract));
 const catchedMapCharacterList = tryCatch(mapCharacterList);
 
-const fetchAllCharacters = () => asyncAxios({
+const fetchCharacter = (id) => asyncAxios({
     method: 'get',
-    url: CHARACTERS
+    url: `${CHARACTERS}/${id}`
 }).chain(resultToAsync(catchedMapCharacterList));
 
-export default fetchAllCharacters;
+export default fetchCharacter;
