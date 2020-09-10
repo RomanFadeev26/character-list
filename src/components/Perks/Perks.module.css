@@ -1,0 +1,14 @@
+.Perk {
+    height: 2em;
+    border-bottom: 0;
+    list-style-position: inside;
+    list-style-type: circle;
+}
+
+.selected {
+    list-style-type: disc;
+}
+
+.PerkList {
+    margin: 5px 12px;
+}
