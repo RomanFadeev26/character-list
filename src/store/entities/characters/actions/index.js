@@ -4,9 +4,10 @@ import bimap from 'crocks/pointfree/bimap';
 import fst from 'crocks/Pair/fst';
 import snd from 'crocks/Pair/snd';
 import getPropOr from 'crocks/helpers/getPropOr';
-import fetchAllCharacters from "../../../../api/fetchAllCharacters";
+import fetchAllCharacters from '../../../../api/fetchAllCharacters';
+import fetchCharacter from '../../../../api/fetchCharacter';
+import {loadingError, loadingSuccess} from '../../../app/actions/actions';
 import {FETCH_CHARACTERS} from './actionTypes';
-import {loadingError, loadingSuccess} from "../../../../store/app/actions/actions";
 
 const fetchCharacters = (characters) => ({type: FETCH_CHARACTERS, payload: characters});
 
@@ -16,7 +17,13 @@ const patchActions = composeB(bimap(dispatchFetchCharacters, dispatchLoadingSucc
 const fstAction = composeB(fst, patchActions);
 const sndAction = composeB(snd, patchActions);
 
-export const fetchAllCharactersAction = () => dispatch => fetchAllCharacters.fork(
+export const fetchAllCharactersAction = () => dispatch => fetchAllCharacters().fork(
+    composeB(dispatch, composeB(loadingError, getPropOr('Unknown error', 'message'))),
+    composeB(bimap(fstAction(dispatch), sndAction(dispatch)), branch)
+);
+
+
+export const fetchCharacterAction = id => dispatch => fetchCharacter(id).fork(
     composeB(dispatch, composeB(loadingError, getPropOr('Unknown error', 'message'))),
     composeB(bimap(fstAction(dispatch), sndAction(dispatch)), branch)
 );
