@@ -1,0 +1,4 @@
+.CharacterPage {
+    display: grid;
+    grid-template-columns: 13% 21% 33% 33%;
+}
