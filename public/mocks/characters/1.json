@@ -21,7 +21,8 @@
             "athletics"
           ],
           "saving-throws": [
-            ""
+            "strength",
+            "dexterity"
           ]
         },
         "death-saves": {

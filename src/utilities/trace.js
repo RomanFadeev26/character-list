@@ -1,4 +1,8 @@
 export default function(x) {
-    console.log(x.inspect());
+	if (x && x.inspect) {
+        console.log(x.inspect());
+	} else {
+		console.log(x);
+	}
     return x;
 }

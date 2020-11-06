@@ -1,0 +1,6 @@
+{
+  "name": "SafeThrows",
+  "version": "1.0.0",
+  "main": "./SafeThrows.jsx",
+  "private": true
+}

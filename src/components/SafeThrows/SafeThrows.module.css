@@ -1,0 +1,13 @@
+.SafeThrow {
+    height: 2em;
+    list-style-position: inside;
+    list-style-type: circle;
+}
+
+.selected {
+    list-style-type: disc;
+}
+
+.SafeThrowsList {
+    margin: 5px 0 24px 12px;
+}

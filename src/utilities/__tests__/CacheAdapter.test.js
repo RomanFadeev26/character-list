@@ -12,9 +12,9 @@ describe('CacheAdapter', function () {
                 c: 'c'
             }
         };
-        adapter.run(config);
-        const secondResult = adapter.run(config);
-        const thirdResult = adapter.run(config);
+        adapter.addCache(config);
+        const secondResult = adapter.getCache(config).inspect();
+        const thirdResult = adapter.getCache(config).inspect();
         expect(secondResult).toBe(thirdResult);
     })
 });

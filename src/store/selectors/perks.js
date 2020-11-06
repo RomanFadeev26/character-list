@@ -1,14 +1,27 @@
 import {createSelector, createStructuredSelector} from 'reselect';
 import {composeB} from 'crocks/combinators';
-import {option} from 'crocks/pointfree'
-import perksModel from '../../core/models/perks/perksModel';
+import {map, merge, option} from 'crocks/pointfree'
+import perksModel, {proficienciesGetter} from '../../core/models/perks/perksModel';
 import character from './character';
+import {compose} from 'crocks/helpers';
+import listToArray from 'crocks/List/listToArray';
+import toPairs from 'crocks/Pair/toPairs';
+import zip from '../../utilities/zip';
 
-import {getArraysOfProficiencies as proficiencies} from '../../core/models/perks/perksModel';
+const perkNames = Object.keys(perksModel);
+const perksCalculators = compose(listToArray, map(merge((fst, snd) => snd(fst))), toPairs);
+const calculatorArray = perksCalculators(perksModel);
+const entries = zip(perkNames, calculatorArray);
+const perksSelector = createStructuredSelector(Object.fromEntries(entries));
 
 const perksList = createSelector(
     character,
-    composeB(perksModel, option({}))
+    composeB(perksSelector, option({}))
+);
+
+const proficiencies = createSelector(
+	character,
+	composeB(proficienciesGetter, option({}))
 );
 
 const perks = createStructuredSelector({

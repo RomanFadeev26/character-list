@@ -4,11 +4,13 @@ import {withRouter} from 'react-router';
 import composeB from 'crocks/combinators/composeB';
 import compose from 'crocks/helpers/compose';
 import toPairs from 'crocks/Pair/toPairs';
+import Pair from 'crocks/Pair';
 import pick from 'crocks/helpers/pick';
 import listToArray from 'crocks/List/listToArray';
 import {merge, map} from 'crocks/pointfree';
 import perks from '../../store/selectors/perks';
 import classes from './Perks.module.css';
+import cls from 'classnames';
 
 const perksText = {
     athletics: 'Атлетика',
@@ -31,11 +33,22 @@ const perksText = {
     persuasion: 'Убеждение'
 };
 
-const perksPairToText = (perkName, value) => (<li className={classes.Perk}>{`${perksText[perkName]}: ${value}`}</li>);
+
+
+const perksPairToText = (profs, perks) =>
+	perks.map(
+		merge(
+			(perkName, value) => (
+				<li className={cls(classes.Perk, {[classes.selected]: profs.includes(perkName)})}>
+					{`${perksText[perkName]}: ${value}`}
+				</li>
+			)
+		)
+	);
 const keysForProps = Object.keys(perksText);
-const propsToPairs = composeB(toPairs, pick(keysForProps));
-const mapPairsToTexts = composeB(listToArray, map(merge(perksPairToText)));
-const perksToText = compose(mapPairsToTexts, propsToPairs, props => props.perks);
+const propsToPairs = compose(toPairs, pick(keysForProps));
+const mapPairsToTexts = compose(merge(perksPairToText), map(listToArray));
+const perksToText = compose(mapPairsToTexts, map(propsToPairs), props => Pair(props.proficiencies, props.perks));
 
 const Perks = (props) => {
 	return (<ul className={classes.PerkList}>{perksToText(props)}</ul>);
