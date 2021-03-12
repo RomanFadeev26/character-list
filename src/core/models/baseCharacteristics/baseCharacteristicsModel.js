@@ -1,19 +1,20 @@
 import {composeB} from 'crocks/combinators';
-import {bimap, option} from 'crocks/pointfree';
+import {compose} from 'crocks/helpers';
+import {bimap, option, map} from 'crocks/pointfree';
 import {
 	getStrength,
 	getConstitution,
 	getWisdom,
 	getIntelligence,
 	getDexterity,
-	getCharisma,
-	getModifierFrom
+	getCharisma
 } from '../basedOnBaseCharacteristics/getters';
+import {allModifiers} from './someLogic';
 import branch from 'crocks/Pair/branch';
 
-const baseCharacteristicPair = getCharacteristic => {
+export const baseCharacteristicPair = getCharacteristic => {
     const getCharacteristicFromMaybe = composeB(option(0), getCharacteristic);
-    const getModifierFromMaybe = composeB(option(0), getModifierFrom(getCharacteristic));
+    const getModifierFromMaybe = compose(option(0), map(x => allModifiers[x]), getCharacteristic);
     return composeB(bimap(getCharacteristicFromMaybe, getModifierFromMaybe), branch);
 };
 

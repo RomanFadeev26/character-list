@@ -1,7 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router';
-import composeB from 'crocks/combinators/composeB';
 import compose from 'crocks/helpers/compose';
 import toPairs from 'crocks/Pair/toPairs';
 import Pair from 'crocks/Pair';
@@ -54,6 +53,6 @@ const Perks = (props) => {
 	return (<ul className={classes.PerkList}>{perksToText(props)}</ul>);
 };
 
-const connector = composeB(withRouter, connect(perks));
+const connector = compose(withRouter, connect(perks));
 
 export default connector(Perks);

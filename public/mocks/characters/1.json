@@ -17,12 +17,15 @@
         "photo": "https://i.pinimg.com/736x/92/1b/b2/921bb2b9cfaee0fb768cfb08be6f38be.jpg",
         "perks": {
           "proficiency": [
-            "stealth",
-            "athletics"
+            "athletics",
+            "intimidation",
+            "perception",
+            "persuasion",
+            "survival"
           ],
           "saving-throws": [
             "strength",
-            "dexterity"
+            "constitution"
           ]
         },
         "death-saves": {
@@ -32,12 +35,12 @@
         "speed": 30,
         "proficiency-bonus": 2,
         "base-characteristics": {
-          "strength": 10,
+          "strength": 15,
           "dexterity": 8,
-          "constitution": 12,
-          "intelligence": 15,
-          "wisdom": 14,
-          "charisma": 13
+          "constitution": 14,
+          "intelligence": 10,
+          "wisdom": 10,
+          "charisma": 16
         },
         "hitpoints": {
           "current": 5,

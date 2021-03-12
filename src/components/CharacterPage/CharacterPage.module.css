@@ -1,4 +1,9 @@
 .CharacterPage {
     display: grid;
-    grid-template-columns: 8% 15% 15% 33%;
+    grid-template-rows: 10% 90%;
+}
+
+.perks {
+    display: grid;
+    grid-template-columns: 15% 20% 15% 33%;
 }

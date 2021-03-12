@@ -29,4 +29,13 @@ const perks = createStructuredSelector({
 	proficiencies
 });
 
+const passivePerceptionSelector = createSelector(
+	perksList,
+	perks => perks.perception + 10
+);
+
+export const passivePerception = createStructuredSelector({
+	passivePerception: passivePerceptionSelector
+});
+
 export default perks;

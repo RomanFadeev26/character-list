@@ -1,6 +1,7 @@
 .Characteristics {
     list-style-type: none;
-    margin: 0 12px;
+    margin-right: 12px;
+    margin-top: 0;
 }
 
 .CharacteristicBlock {

@@ -1,5 +1,5 @@
+import getPath from 'crocks/Maybe/getPath';
 import {composedPerkCalculator, isMasterConstructor, getArraysOfProficiencies} from '../basedOnBaseCharacteristics';
-
 import {
 	getCharisma,
 	getWisdom,
@@ -7,7 +7,6 @@ import {
 	getDexterity,
 	getStrength
 } from '../basedOnBaseCharacteristics/getters'
-import getPath from 'crocks/Maybe/getPath';
 
 const getProficiencies = getPath(['perks', 'proficiency']);
 export const proficienciesGetter = getArraysOfProficiencies(getProficiencies);
