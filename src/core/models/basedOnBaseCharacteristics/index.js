@@ -13,14 +13,15 @@ const add = curry((a, b) => a + b);
 const liftedAdd = liftA2(add);
 
 const calcProficiencyBonus = curry(
-	(perk, isMasterPredicate) => ifElse(isMasterPredicate(perk), getProficiencyBonus, () => Just(0))
+	(isMaster) => ifElse(isMaster, getProficiencyBonus, () => Just(0))
 );
 const calcPerkValueFromCharacteristic =
-	curry((perk, getCharacteristic, isMasterPredicate) =>
-		compose(option(0), merge(liftedAdd), bimap(calcProficiencyBonus(perk, isMasterPredicate), compose(map(x => allModifiers[x]), getCharacteristic))));
+	curry((isMaster, getCharacteristic) =>
+		compose(option(0), merge(liftedAdd), bimap(calcProficiencyBonus(isMaster), compose(map(x => allModifiers[x]), getCharacteristic))));
+
 export const composedPerkCalculator =
 	curry((isMasterPredicate, getCharacteristic, perk) =>
-		composeB(calcPerkValueFromCharacteristic(perk, getCharacteristic, isMasterPredicate), branch));
+		composeB(calcPerkValueFromCharacteristic(isMasterPredicate(perk), getCharacteristic), branch));
 
 export const getArraysOfProficiencies = getter => compose(a => a.flat(), maybeToArray, getter);
 export const isMasterConstructor = getter => compose2(includes, (a) => a, getter);
